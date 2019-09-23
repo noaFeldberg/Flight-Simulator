@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ScrollBar?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<?import view.MapDisplayer1?>
+
+<SplitPane dividerPositions="0.34006211180124224, 0.703416149068323" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="306.0" minWidth="831.0" prefHeight="306.0" prefWidth="831.0" style="-fx-background-color: #3d495f;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.MainWindowController">
+  <items>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="346.0" prefWidth="255.0">
+         <children>
+            <Button layoutX="75.0" layoutY="14.0" mnemonicParsing="false" onAction="#LoadCSV" style="-fx-background-color: #ffb81f;" text="Load data" textFill="#fcf9f9" />
+            <Button layoutX="150.0" layoutY="14.0" mnemonicParsing="false" onAction="#calculate" style="-fx-background-color: #ffb81f;" text="Calculate path" textFill="#f9f2f2" />
+            <Button layoutX="10.0" layoutY="14.0" mnemonicParsing="false" onAction="#Connect" style="-fx-background-color: #ffb81f;" text="Connect" textFill="#f9f6f6" />
+            <MapDisplayer1 fx:id="mapDis" height="250.0" layoutX="14.0" layoutY="61.0" width="250.0" />
+            <ImageView fx:id="airPlaneDefault" fitHeight="150.0" fitWidth="200.0" layoutX="14.0" layoutY="100.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../resources/defaultAirPlane.png" />
+               </image>
+            </ImageView>
+            <Text fx:id="pleaseLoadText" fill="#eae1e1" layoutX="-10.0" layoutY="229.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please load CSV file" textAlignment="CENTER" wrappingWidth="269.33333333333326">
+               <font>
+                  <Font name="System Bold" size="26.0" />
+               </font>
+            </Text>
+         </children></AnchorPane>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+         <children>
+            <Button layoutX="56.0" layoutY="266.0" mnemonicParsing="false" onAction="#Load" style="-fx-background-color: #ffb81f;" text="Load File " textFill="#fcf6f6" />
+            <RadioButton fx:id="autopilotButton" layoutX="60.0" layoutY="5.0" mnemonicParsing="false" text="Autopilot" textFill="#fffdfd">
+               <font>
+                  <Font name="System Bold" size="21.0" />
+               </font></RadioButton>
+            <TextArea fx:id="txtArea" layoutX="16.0" layoutY="44.0" prefHeight="217.0" prefWidth="240.0" />
+            <Button layoutX="150.0" layoutY="267.0" mnemonicParsing="false" onMouseClicked="#runScript" style="-fx-background-color: #ffb81f;" text="Run Script" textFill="#fcf6f6" />
+         </children></AnchorPane>
+      <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="398.0" prefWidth="935.0">
+         <children>
+            <Circle fx:id="bigCircle" fill="#ffb81f" layoutX="134.0" layoutY="165.0" radius="89.0" stroke="BLACK" strokeType="INSIDE" translateX="1.0" />
+            <Circle fx:id="smallCircle" cache="true" layoutX="132.0" layoutY="165.0" onMouseDragged="#dragable" onMousePressed="#dragable" radius="33.0" stroke="BLACK" strokeType="INSIDE">
+               <fill>
+                  <LinearGradient endX="0.12380952380952381" endY="1.0" startX="0.10476187751406718" startY="0.057142857142857134">
+                     <stops>
+                        <Stop color="BLACK" />
+                        <Stop color="BLACK" offset="0.007653061224489797" />
+                        <Stop color="WHITE" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </fill>
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+               <effect>
+                  <DropShadow />
+               </effect></Circle>
+            <RadioButton fx:id="manualButton" layoutX="80.0" layoutY="6.0" mnemonicParsing="false" text="Manual" textFill="#f9f7f7">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font></RadioButton>
+            <Text fill="#f9f7f7" layoutX="108.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="aileron">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Text>
+            <Text fill="#fefbfb" layoutX="102.0" layoutY="293.0" stroke="#cf6c6c" strokeType="INSIDE" strokeWidth="0.0" text="rudder" wrappingWidth="66.00000000000023">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Text>
+            <Text fill="#fcfafa" layoutX="-21.0" layoutY="175.0" rotate="270.0" strokeType="OUTSIDE" strokeWidth="0.0" text="throtlle">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Text>
+            <Text fill="#fcf9f9" layoutX="221.0" layoutY="159.0" rotate="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="elevator">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Text>
+            <ScrollBar fx:id="throtlleBar" layoutX="25.0" layoutY="79.0" onMouseClicked="#throttleBarController" orientation="VERTICAL" prefHeight="171.0" prefWidth="12.0" />
+            <ScrollBar fx:id="rudderBar" layoutX="25.0" layoutY="258.0" onMouseClicked="#rudderBarController" prefHeight="14.0" prefWidth="215.0" />
+            <ImageView fitHeight="24.0" fitWidth="53.0" layoutX="70.0" layoutY="45.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../resources/whitArrow.jpg" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="24.0" fitWidth="53.0" layoutX="174.0" layoutY="45.0" pickOnBounds="true" preserveRatio="true" rotate="180.0">
+               <image>
+                  <Image url="@../../resources/whitArrow.jpg" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="24.0" fitWidth="53.0" layoutX="238.0" layoutY="198.0" pickOnBounds="true" preserveRatio="true" rotate="270.0">
+               <image>
+                  <Image url="@../../resources/whitArrow.jpg" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="24.0" fitWidth="53.0" layoutX="236.0" layoutY="81.0" pickOnBounds="true" preserveRatio="true" rotate="90.0">
+               <image>
+                  <Image url="@../../resources/whitArrow.jpg" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+  </items>
+</SplitPane>
